@@ -19,7 +19,7 @@ class Tagger:
             raise FileNotFoundError("The model file: {} not found.".format(modelFile))
         try:
             with open(modelFile) as file:
-                myTagger = yaml.load(file)
+                myTagger = yaml.load(file, Loader=yaml.FullLoader)
             if not isinstance(myTagger, BrillTagger):
                 raise TypeError("The model file: {} could not be loaded as a nltk.tag.brill.BrillTagger object".format(
                     modelFile
